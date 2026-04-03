@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Moon, Sun, Menu, X } from 'lucide-react'
 import { useTheme } from './ThemeProvider'
 import Link from 'next/link'
@@ -38,123 +38,131 @@ export default function Header() {
     { name: 'Blog', href: '/blog', type: 'link' },
     { name: 'Contact', href: '#contact', type: 'scroll' },
   ]
+
+  const scrollTo = (href) => {
+    if (pathname !== '/') {
+      window.location.href = '/' + href
+    } else {
+      document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
+  const navLinkClass = (href) =>
+    `relative text-sm font-medium transition-colors duration-200 group ${
+      pathname === href
+        ? 'text-emerald-500'
+        : 'text-gray-600 dark:text-gray-300 hover:text-emerald-500 dark:hover:text-emerald-400'
+    }`
+
   return (
     <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
+      initial={{ y: -80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.4, ease: 'easeOut' }}
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/80 dark:bg-dark-200/80 backdrop-blur-md shadow-lg'
+          ? 'bg-white/80 dark:bg-dark-200/80 backdrop-blur-md border-b border-emerald-500/10 shadow-sm shadow-emerald-500/5'
           : 'bg-transparent'
       }`}
     >
-      <nav className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
-        <div className="flex items-center justify-between">
-          <Link href="/">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="text-xl sm:text-2xl font-bold gradient-text cursor-pointer"
-            >
-              MSR
-            </motion.div>
-          </Link>
+      <nav className="container mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
 
-          <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
-            {navItems.map((item) => (
-              item.type === 'link' ? (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={`text-sm lg:text-base transition-colors duration-200 ${
-                    pathname === item.href 
-                      ? 'text-blue-600 dark:text-blue-400 font-medium'
-                      : 'text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400'
-                  }`}
-                >
-                  {item.name}
-                </Link>
-              ) : (
-                <button
-                  key={item.name}
-                  onClick={() => {
-                    if (pathname !== '/') {
-                      window.location.href = '/' + item.href
-                    } else {
-                      document.querySelector(item.href)?.scrollIntoView({ behavior: 'smooth' })
-                    }
-                  }}
-                  className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
-                >
-                  {item.name}
-                </button>
-              )
-            ))}
-            <button
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="p-1.5 sm:p-2 rounded-lg bg-gray-100 dark:bg-dark-100 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-            >
-              {theme === 'dark' ? <Sun size={18} className="sm:w-5 sm:h-5 text-gray-700 dark:text-gray-300" /> : <Moon size={18} className="sm:w-5 sm:h-5 text-gray-700 dark:text-gray-300" />}
-            </button>
-          </div>
+        {/* Logo */}
+        <Link href="/">
+          <motion.span
+            whileHover={{ scale: 1.05 }}
+            className="text-xl font-bold gradient-text cursor-pointer select-none"
+          >
+            MSR
+          </motion.span>
+        </Link>
 
-          <div className="md:hidden flex items-center space-x-2 sm:space-x-3">
-            <button
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="p-1.5 sm:p-2 rounded-lg bg-gray-100 dark:bg-dark-100"
-            >
-              {theme === 'dark' ? <Sun size={18} className="sm:w-5 sm:h-5 text-gray-700 dark:text-gray-300" /> : <Moon size={18} className="sm:w-5 sm:h-5 text-gray-700 dark:text-gray-300" />}
-            </button>
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-1.5 sm:p-2 rounded-lg bg-gray-100 dark:bg-dark-100"
-            >
-              {isMobileMenuOpen ? <X size={18} className="sm:w-5 sm:h-5 text-gray-700 dark:text-gray-300" /> : <Menu size={18} className="sm:w-5 sm:h-5 text-gray-700 dark:text-gray-300" />}
-            </button>
-          </div>
+        {/* Desktop Nav */}
+        <div className="hidden md:flex items-center gap-6 lg:gap-8 absolute left-1/2 -translate-x-1/2">
+          {navItems.map((item) =>
+            item.type === 'link' ? (
+              <Link key={item.name} href={item.href} className={navLinkClass(item.href)}>
+                {item.name}
+                <span className={`absolute -bottom-1 left-0 h-0.5 bg-emerald-500 rounded-full transition-all duration-200 ${pathname === item.href ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+              </Link>
+            ) : (
+              <button
+                key={item.name}
+                onClick={() => scrollTo(item.href)}
+                className="relative text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors duration-200 group"
+              >
+                {item.name}
+                <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-emerald-500 rounded-full transition-all duration-200 group-hover:w-full" />
+              </button>
+            )
+          )}
         </div>
 
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="md:hidden mt-3 sm:mt-4 py-3 sm:py-4 bg-white dark:bg-dark-200 rounded-lg shadow-lg mx-2 sm:mx-0"
+        {/* Right Controls */}
+        <div className="flex items-center gap-2">
+          <motion.button
+            whileTap={{ scale: 0.9 }}
+            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            className="p-2 rounded-lg bg-gray-100 dark:bg-dark-100 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 hover:text-emerald-500 transition-colors"
+            aria-label="Toggle theme"
           >
-            {navItems.map((item) => (
-              item.type === 'link' ? (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className={`block w-full text-left px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base hover:bg-gray-100 dark:hover:bg-dark-100 ${
-                    pathname === item.href 
-                      ? 'text-blue-600 dark:text-blue-400 font-medium'
-                      : 'text-gray-700 dark:text-gray-300'
-                  }`}
-                >
-                  {item.name}
-                </Link>
-              ) : (
-                <button
-                  key={item.name}
-                  onClick={() => {
-                    setIsMobileMenuOpen(false)
-                    if (pathname !== '/') {
-                      window.location.href = '/' + item.href
-                    } else {
-                      document.querySelector(item.href)?.scrollIntoView({ behavior: 'smooth' })
-                    }
-                  }}
-                  className="block w-full text-left px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark-100"
-                >
-                  {item.name}
-                </button>
-              )
-            ))}
-          </motion.div>
-        )}
+            {theme === 'dark'
+              ? <Sun size={18} className="text-gray-400" />
+              : <Moon size={18} className="text-gray-600" />}
+          </motion.button>
+
+          <motion.button
+            whileTap={{ scale: 0.9 }}
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden p-2 rounded-lg bg-gray-100 dark:bg-dark-100 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors"
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen
+              ? <X size={18} className="text-gray-600 dark:text-gray-300" />
+              : <Menu size={18} className="text-gray-600 dark:text-gray-300" />}
+          </motion.button>
+        </div>
       </nav>
 
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25, ease: 'easeInOut' }}
+            className="md:hidden overflow-hidden border-t border-emerald-500/10 bg-white/95 dark:bg-dark-200/95 backdrop-blur-md"
+          >
+            <div className="container mx-auto px-4 py-3 flex flex-col">
+              {navItems.map((item) =>
+                item.type === 'link' ? (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                      pathname === item.href
+                        ? 'text-emerald-500 bg-emerald-50 dark:bg-emerald-900/20'
+                        : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark-100'
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                ) : (
+                  <button
+                    key={item.name}
+                    onClick={() => { setIsMobileMenuOpen(false); scrollTo(item.href) }}
+                    className="px-3 py-2.5 rounded-lg text-sm font-medium text-left text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark-100 transition-colors"
+                  >
+                    {item.name}
+                  </button>
+                )
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.header>
   )
 }

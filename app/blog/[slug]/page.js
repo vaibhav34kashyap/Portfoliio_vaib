@@ -101,10 +101,10 @@ export default function BlogPost({ params }) {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 dark:from-dark-300 dark:via-dark-200 dark:to-dark-100">
+    <div className="min-h-screen bg-white dark:bg-dark-300">
       <Header />
       
-      <main className="pt-20">
+      <main className="pt-0">
         {/* Hero Section */}
         <section className="py-16 relative overflow-hidden">
           <div className="absolute inset-0">
@@ -132,7 +132,7 @@ export default function BlogPost({ params }) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
               >
-                <span className={`px-4 py-2 rounded-full text-sm font-medium bg-gradient-to-r ${post.color} text-white`}>
+                <span className={`px-4 py-2 rounded-lg text-sm font-medium bg-gradient-to-r ${post.color} text-white`}>
                   {post.category}
                 </span>
               </motion.div>
@@ -176,7 +176,9 @@ export default function BlogPost({ params }) {
         </section>
 
         {/* Content Section */}
-        <section className="py-16">
+        <section className="py-16 relative overflow-hidden">
+          <div className="absolute inset-0 dark:hidden bg-[linear-gradient(rgba(16,185,129,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(16,185,129,0.07)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+          <div className="absolute inset-0 hidden dark:block bg-[linear-gradient(rgba(156,163,175,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(156,163,175,0.15)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
           <div className="container mx-auto px-4 sm:px-6">
             <div className="max-w-4xl mx-auto">
               <div className="grid lg:grid-cols-4 gap-12">
@@ -228,7 +230,7 @@ export default function BlogPost({ params }) {
                     transition={{ duration: 0.6, delay: 0.5 }}
                   >
                     {/* Stats */}
-                    <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+                    <div className="bg-white dark:bg-dark-100 rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
                       <h3 className="font-semibold text-gray-900 dark:text-white mb-4">Article Stats</h3>
                       <div className="space-y-3">
                         <div className="flex items-center justify-between">
@@ -249,9 +251,9 @@ export default function BlogPost({ params }) {
                     </div>
 
                     {/* Share */}
-                    <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+                    <div className="bg-white dark:bg-dark-100 rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
                       <h3 className="font-semibold text-gray-900 dark:text-white mb-4">Share Article</h3>
-                      <button className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                      <button className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition-colors shadow-lg shadow-emerald-500/20">
                         <Share2 className="w-4 h-4" />
                         Share
                       </button>

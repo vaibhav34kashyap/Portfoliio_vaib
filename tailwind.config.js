@@ -11,15 +11,15 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          50: '#eff6ff',
-          500: '#3b82f6',
-          600: '#2563eb',
-          700: '#1d4ed8',
+          50: '#ecfdf5',
+          500: '#10B981',
+          600: '#059669',
+          700: '#047857',
         },
         dark: {
           100: '#1e293b',
-          200: '#0f172a',
-          300: '#020617',
+          200: '#0F172A',
+          300: '#080e1a',
         }
       },
       animation: {
@@ -44,8 +44,8 @@ module.exports = {
           '50%': { transform: 'translateY(-20px)' }
         },
         glow: {
-          '0%': { boxShadow: '0 0 20px rgba(59, 130, 246, 0.5)' },
-          '100%': { boxShadow: '0 0 30px rgba(59, 130, 246, 0.8)' }
+          '0%': { boxShadow: '0 0 20px rgba(16, 185, 129, 0.5)' },
+          '100%': { boxShadow: '0 0 30px rgba(16, 185, 129, 0.8)' }
         },
         spin: {
           '0%': { transform: 'rotate(0deg)' },

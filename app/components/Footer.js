@@ -1,157 +1,109 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { Github, Linkedin, Mail, Heart } from 'lucide-react'
-import Lightning from './Lightning'
-import { useTheme } from './ThemeProvider'
+import { Github, Linkedin, Mail } from 'lucide-react'
 
 export default function Footer() {
-  const { theme } = useTheme()
-  
   const socialLinks = [
-    {
-      name: 'GitHub',
-      icon: <Github size={20} />,
-      url: 'https://github.com/mohit-singh-rawat',
-      color: 'hover:text-gray-900 dark:hover:text-white'
-    },
-    {
-      name: 'LinkedIn',
-      icon: <Linkedin size={20} />,
-      url: 'https://www.linkedin.com/in/mohit-singh-rawat-2a1112299/',
-      color: 'hover:text-blue-600'
-    },
-    {
-      name: 'Email',
-      icon: <Mail size={20} />,
-      url: 'mailto:rawat.mohitsingh7455@gmail.com?subject=Portfolio Contact&body=Hi Mohit, I would like to get in touch with you.',
-      color: 'hover:text-red-500'
-    }
+    { name: 'GitHub', icon: <Github size={18} />, url: 'https://github.com/mohit-singh-rawat' },
+    { name: 'LinkedIn', icon: <Linkedin size={18} />, url: 'https://www.linkedin.com/in/mohit-singh-rawat-2a1112299/' },
+    { name: 'Email', icon: <Mail size={18} />, url: 'mailto:rawat.mohitsingh7455@gmail.com' },
   ]
 
-  const quickLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Blog', href: '#blog' },
-    { name: 'Contact', href: '#contact' }
+  const columns = [
+    {
+      heading: 'Portfolio',
+      links: [
+        { name: 'Home', href: '#home' },
+        { name: 'About', href: '#about' },
+        { name: 'Projects', href: '#projects' },
+        { name: 'Blog', href: '#blog' },
+      ],
+    },
+    {
+      heading: 'Resources',
+      links: [
+        { name: 'GitHub', href: 'https://github.com/mohit-singh-rawat' },
+        { name: 'LinkedIn', href: 'https://www.linkedin.com/in/mohit-singh-rawat-2a1112299/' },
+        { name: 'Resume', href: '#' },
+      ],
+    },
+    {
+      heading: 'Contact',
+      links: [
+        { name: 'Contact Me', href: '#contact' },
+        { name: 'Email', href: 'mailto:rawat.mohitsingh7455@gmail.com' },
+        { name: 'Hire Me', href: '#contact' },
+      ],
+    },
   ]
 
   return (
-    <footer className="relative bg-white dark:bg-dark-300 border-t border-gray-200 dark:border-gray-700 overflow-hidden">
-      {/* Lightning Background */}
-      <div className="absolute inset-0 opacity-20 dark:opacity-30">
-        <Lightning
-          hue={theme === 'dark' ? 270 : 220}
-          xOffset={0}
-          speed={0.5}
-          intensity={0.8}
-          size={1.2}
-        />
-      </div>
-      
-      <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 relative z-10">
-        <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="text-xl sm:text-2xl font-bold gradient-text mb-3 sm:mb-4">
-              Mohit Singh Rawat
-            </h3>
-            <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-              Frontend Developer passionate about creating beautiful web interfaces 
-              and bringing ideas to life through code.
+    <footer className="bg-gradient-to-br from-emerald-50 via-white to-emerald-50 dark:from-gray-950 dark:via-[#0a1628] dark:to-gray-950 text-gray-800 dark:text-white border-t border-emerald-100 dark:border-gray-800">
+      <div className="container mx-auto px-6 sm:px-10 py-14 flex flex-col gap-10">
+
+        {/* Main row */}
+        <div className="flex flex-col md:flex-row md:justify-between gap-10">
+
+          {/* Left — Brand */}
+          <div className="flex flex-col gap-4 max-w-xs">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-md bg-emerald-500 flex items-center justify-center text-white font-black text-sm">M</div>
+              <span className="font-bold text-gray-900 dark:text-white text-lg">Mohit Singh Rawat</span>
+            </div>
+            <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+              Frontend Developer crafting clean, responsive web experiences — making ideas easier to build, share, and scale.
             </p>
-            <div className="flex space-x-3 sm:space-x-4">
-              {socialLinks.map((link, index) => (
-                <motion.a
-                  key={index}
+            <div className="flex gap-4">
+              {socialLinks.map((link) => (
+                <a
+                  key={link.name}
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  whileHover={{ scale: 1.1 }}
-                  className={`p-3 bg-gray-100 dark:bg-dark-100 rounded-full text-gray-600 dark:text-gray-400 transition-all duration-300 ${link.color}`}
+                  className="text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
                 >
                   {link.icon}
-                </motion.a>
+                </a>
               ))}
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">
-              Quick Links
-            </h4>
-            <ul className="space-y-3">
-              {quickLinks.map((link, index) => (
-                <li key={index}>
-                  <a
-                    href={link.href}
-                    className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
-          >
-            <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">
-              Get In Touch
-            </h4>
-            <div className="space-y-3">
-              <p className="text-gray-600 dark:text-gray-300">
-                <span className="font-medium">Email:</span><br />
-                rawat.mohitsingh7455@gmail.com
-              </p>
-              <p className="text-gray-600 dark:text-gray-300">
-                <span className="font-medium">Location:</span><br />
-                India
-              </p>
-              <p className="text-gray-600 dark:text-gray-300">
-                <span className="font-medium">Available for:</span><br />
-                Freelance & Full-time opportunities
-              </p>
-            </div>
-          </motion.div>
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          viewport={{ once: true }}
-          className="border-t border-gray-200 dark:border-gray-700 mt-8 sm:mt-12 pt-6 sm:pt-8"
-        >
-          <div className="flex flex-col md:flex-row items-center justify-between">
-            <p className="text-gray-600 dark:text-gray-300 text-xs sm:text-sm mb-3 md:mb-0 text-center md:text-left">
-              © {new Date().getFullYear()} Mohit Singh Rawat. All rights reserved.
-            </p>
-            <div className="flex items-center justify-center md:justify-end text-gray-600 dark:text-gray-300 text-xs sm:text-sm">
-              <span>Made with</span>
-              <Heart className="w-3 h-3 sm:w-4 sm:h-4 mx-1 text-red-500 fill-current" />
-              <span>using Next.js & Tailwind CSS</span>
             </div>
           </div>
-        </motion.div>
+
+          {/* Right — Link columns */}
+          <div className="flex flex-wrap gap-10 sm:gap-16">
+            {columns.map((col) => (
+              <div key={col.heading} className="flex flex-col gap-3">
+                <p className="text-sm font-semibold text-gray-900 dark:text-white">{col.heading}</p>
+                <ul className="flex flex-col gap-2">
+                  {col.links.map((link) => (
+                    <li key={link.name}>
+                      <a
+                        href={link.href}
+                        className="text-sm text-gray-500 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
+                      >
+                        {link.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+        </div>
+
+        {/* Divider */}
+        <div className="w-full h-px bg-gray-200 dark:bg-gray-800" />
+
+        {/* Bottom bar */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-gray-400 dark:text-gray-500">
+          <p>© {new Date().getFullYear()} Mohit Singh Rawat. All rights reserved.</p>
+          <div className="flex gap-5">
+            <a href="#" className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Terms of Service</a>
+            <a href="#" className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Cookie Settings</a>
+          </div>
+        </div>
+
       </div>
     </footer>
   )

@@ -12,6 +12,7 @@ export default function BlogPage() {
   const [selectedCategory, setSelectedCategory] = useState('All')
   const [hoveredPost, setHoveredPost] = useState(null)
   const [searchTerm, setSearchTerm] = useState('')
+  const [showGrid, setShowGrid] = useState(true)
 
   const categories = ['All', 'React', 'Next.js', 'JavaScript', 'Web Development', 'UI/UX']
 
@@ -157,26 +158,26 @@ export default function BlogPage() {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 dark:from-dark-300 dark:via-dark-200 dark:to-dark-100">
+    <div className="min-h-screen bg-white dark:bg-dark-300">
       <Header />
       
-      <main className="pt-20">
+      <main className="pt-0">
         {/* Hero Section */}
         <section className="py-16 relative overflow-hidden">
-          <div className="absolute inset-0 overflow-hidden">
-            <motion.div
-              animate={{
-                rotate: [0, 360],
-                scale: [1, 1.2, 1]
-              }}
-              transition={{
-                duration: 25,
-                repeat: Infinity,
-                ease: "linear"
-              }}
-              className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-r from-blue-400/10 to-indigo-400/10 rounded-full blur-3xl"
-            />
-          </div>
+          {/* Grid background */}
+          <div className="absolute inset-0 dark:hidden bg-[linear-gradient(rgba(16,185,129,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(16,185,129,0.07)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+          <div className="absolute inset-0 hidden dark:block bg-[linear-gradient(rgba(156,163,175,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(156,163,175,0.15)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+          {/* Floating orbs */}
+          <motion.div
+            className="absolute top-1/4 -left-32 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"
+            animate={{ x: [0, 40, 0], y: [0, -30, 0] }}
+            transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+          />
+          <motion.div
+            className="absolute bottom-1/4 -right-32 w-80 h-80 bg-emerald-400/10 rounded-full blur-3xl pointer-events-none"
+            animate={{ x: [0, -40, 0], y: [0, 30, 0] }}
+            transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+          />
 
           <div className="container mx-auto px-4 sm:px-6 relative z-10">
             <BlurReveal className="text-center mb-12">
@@ -187,7 +188,7 @@ export default function BlogPage() {
                 transition={{ duration: 0.8 }}
               >
                 <span className="text-gray-900 dark:text-white">My </span>
-                <span className="gradient-text bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">Blog</span>
+                <span className="gradient-text">Blog</span>
               </motion.h1>
               <motion.p 
                 className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto"
@@ -214,7 +215,7 @@ export default function BlogPage() {
                   placeholder="Search articles..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 rounded-full border border-gray-200 dark:border-gray-600 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:text-white"
+                  className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-dark-100 focus:outline-none focus:ring-2 focus:ring-emerald-500 dark:text-white"
                 />
               </div>
             </motion.div>
@@ -230,10 +231,10 @@ export default function BlogPage() {
                 <motion.button
                   key={category}
                   onClick={() => setSelectedCategory(category)}
-                  className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                  className={`px-5 py-2 rounded-lg font-medium transition-all duration-200 ${
                     selectedCategory === category
-                      ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
-                      : 'bg-white/60 dark:bg-gray-800/60 text-gray-700 dark:text-gray-300 hover:bg-white dark:hover:bg-gray-800 border border-gray-200 dark:border-gray-600'
+                      ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-500/20'
+                      : 'bg-gray-100 dark:bg-dark-100 text-gray-700 dark:text-gray-300 hover:border-emerald-500 hover:text-emerald-600 dark:hover:text-emerald-400 border border-gray-200 dark:border-gray-700'
                   }`}
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
@@ -246,8 +247,30 @@ export default function BlogPage() {
         </section>
 
         {/* Blog Posts Grid */}
-        <section className="pb-20">
+        <section className="pb-20 relative">
+          {showGrid && (
+            <>
+              <div className="absolute inset-0 dark:hidden bg-[linear-gradient(rgba(16,185,129,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(16,185,129,0.07)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+              <div className="absolute inset-0 hidden dark:block bg-[linear-gradient(rgba(156,163,175,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(156,163,175,0.15)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+            </>
+          )}
           <div className="container mx-auto px-4 sm:px-6">
+            {/* Grid Background Toggle */}
+            <div className="flex justify-end mb-6 max-w-7xl mx-auto">
+              <label className="flex items-center gap-2 cursor-pointer select-none text-sm text-gray-600 dark:text-gray-400">
+                <span>Grid Background</span>
+                <div className="relative">
+                  <input
+                    type="checkbox"
+                    checked={showGrid}
+                    onChange={(e) => setShowGrid(e.target.checked)}
+                    className="sr-only peer"
+                  />
+                  <div className="w-10 h-5 bg-gray-200 dark:bg-gray-700 rounded-full peer-checked:bg-emerald-500 transition-colors duration-200" />
+                  <div className="absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full shadow transition-transform duration-200 peer-checked:translate-x-5" />
+                </div>
+              </label>
+            </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
               <AnimatePresence>
                 {filteredPosts.map((post) => (
@@ -259,7 +282,7 @@ export default function BlogPage() {
                       layout
                       onHoverStart={() => setHoveredPost(post.id)}
                       onHoverEnd={() => setHoveredPost(null)}
-                      className={`relative overflow-hidden rounded-2xl bg-gradient-to-br ${post.bgGradient} backdrop-blur-sm border border-white/30 dark:border-gray-700/30 cursor-pointer group`}
+                      className="relative overflow-hidden rounded-2xl bg-white dark:bg-dark-100 border border-gray-200 dark:border-gray-700 hover:border-emerald-500/50 dark:hover:border-emerald-500/50 cursor-pointer group shadow-sm hover:shadow-lg hover:shadow-emerald-500/10 transition-shadow duration-300"
                       whileHover={{ scale: 1.02, y: -5 }}
                       transition={{ duration: 0.3 }}
                     >
@@ -295,7 +318,7 @@ export default function BlogPage() {
                       </div>
 
                       {/* Title */}
-                      <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                      <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
                         {post.title}
                       </h3>
 
@@ -329,7 +352,7 @@ export default function BlogPage() {
                           </div>
                         </div>
                         
-                        <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-medium group-hover:translate-x-1 transition-transform duration-200">
+                        <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-medium group-hover:translate-x-1 transition-transform duration-200">
                           <span>Read More</span>
                           <ArrowRight className="w-4 h-4" />
                         </div>
@@ -344,12 +367,12 @@ export default function BlogPage() {
             {/* No Results */}
             {filteredPosts.length === 0 && (
               <motion.div 
-                className="text-center py-16"
+                className="text-center py-16 col-span-3"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
               >
-                <BookOpen className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+                <BookOpen className="w-16 h-16 text-emerald-400 mx-auto mb-4" />
                 <h3 className="text-xl font-semibold text-gray-600 dark:text-gray-300 mb-2">
                   No articles found
                 </h3>

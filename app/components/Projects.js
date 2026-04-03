@@ -1,13 +1,7 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { ExternalLink, Github, Eye } from 'lucide-react'
+import { ExternalLink, Github, Eye, X } from 'lucide-react'
 import { useState } from 'react'
-import BlurReveal from './BlurReveal'
-import ShapeBlur from './ShapeBlur'
-import MagneticButton from './MagneticButton'
-import ElectricBorder from './ElectricBorder'
-import GradualBlur from './GradualBlur'
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null)
@@ -105,179 +99,155 @@ export default function Projects() {
     }
   ]
 
+  const selectedProjectData = projects.find(p => p.id === selectedProject)
+
   return (
-    <section id="projects" className="py-12 sm:py-16 lg:py-20 bg-white dark:bg-dark-300 relative overflow-hidden">
+    <section id="projects" className="py-12 sm:py-16 lg:py-20 bg-white dark:bg-dark-300 relative overflow-x-hidden">
+      <div className="absolute inset-0 dark:hidden pointer-events-none" style={{
+        backgroundImage: 'linear-gradient(rgba(16,185,129,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(16,185,129,0.07) 1px, transparent 1px)',
+        backgroundSize: '40px 40px'
+      }} />
+      <div className="absolute inset-0 hidden dark:block pointer-events-none" style={{
+        backgroundImage: 'linear-gradient(rgba(156,163,175,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(156,163,175,0.15) 1px, transparent 1px)',
+        backgroundSize: '40px 40px'
+      }} />
       <div className="container mx-auto px-4 sm:px-6">
-        <BlurReveal className="text-center mb-12 sm:mb-16">
+
+        <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
             <span className="text-gray-900 dark:text-white">My </span>
             <span className="gradient-text">Projects</span>
           </h2>
-          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-2 sm:px-0">
+          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Here are some of my recent projects that showcase my skills in frontend development
           </p>
-        </BlurReveal>
+        </div>
 
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-          {projects.map((project, index) => (
-            <motion.div
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map((project) => (
+            <div
               key={project.id}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              viewport={{ once: true }}
-              className="group"
+              className="group bg-white dark:bg-dark-100 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100 dark:border-gray-700 flex flex-col"
             >
-              <ElectricBorder
-                color="#3b82f6"
-                speed={0.5}
-                chaos={0.3}
-                thickness={1}
-                style={{ borderRadius: 12 }}
-              >
-                <div className="bg-white dark:bg-dark-100 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
               <div className="relative overflow-hidden">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-40 sm:h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                  className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <MagneticButton
+                  <button
                     onClick={() => setSelectedProject(project.id)}
                     className="px-4 py-2 bg-white text-black rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200 flex items-center gap-2"
                   >
                     <Eye size={16} />
                     View Details
-                  </MagneticButton>
+                  </button>
                 </div>
               </div>
 
-              <div className="p-4 sm:p-6">
-                <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-gray-900 dark:text-white">
+              <div className="p-4 flex flex-col flex-1 bg-white dark:bg-dark-100">
+                <h3 className="text-base font-bold mb-1.5 text-gray-900 dark:text-white">
                   {project.title}
                 </h3>
-                <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-3 sm:mb-4 leading-relaxed">
+                <p className="text-xs text-gray-500 dark:text-gray-400 mb-2 leading-relaxed">
                   {project.description}
                 </p>
-
-                <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-4">
+                <p className="text-xs text-gray-600 dark:text-gray-300 mb-3 leading-relaxed flex-1">
+                  {project.longDescription}
+                </p>
+                <div className="flex flex-wrap gap-1.5 mb-3">
                   {project.tech.map((tech, techIndex) => (
                     <span
                       key={techIndex}
-                      className="px-2 sm:px-3 py-0.5 sm:py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-full text-xs sm:text-sm"
+                      className="px-2 py-0.5 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-300 rounded-full text-xs"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
-
                 <div className="flex items-center gap-4">
                   <a
                     href={project.liveUrl}
-                    className="flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
+                    className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 hover:text-emerald-800 dark:hover:text-emerald-300 transition-colors text-xs"
+                  >
+                    <ExternalLink size={13} />
+                    Live Demo
+                  </a>
+                  <a
+                    href={project.githubUrl}
+                    className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors text-xs"
+                  >
+                    <Github size={13} />
+                    Code
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Modal */}
+        {selectedProject && selectedProjectData && (
+          <div
+            className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+            onClick={() => setSelectedProject(null)}
+          >
+            <div
+              className="bg-white dark:bg-dark-100 rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="relative">
+                <img
+                  src={selectedProjectData.image}
+                  alt={selectedProjectData.title}
+                  className="w-full h-64 object-cover rounded-t-xl"
+                />
+                <button
+                  onClick={() => setSelectedProject(null)}
+                  className="absolute top-3 right-3 p-1.5 bg-black/50 hover:bg-black/70 text-white rounded-lg transition-colors"
+                >
+                  <X size={18} />
+                </button>
+              </div>
+              <div className="p-6">
+                <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+                  {selectedProjectData.title}
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                  {selectedProjectData.longDescription}
+                </p>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {selectedProjectData.tech.map((tech, index) => (
+                    <span
+                      key={index}
+                      className="px-3 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-300 rounded-full text-sm"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                <div className="flex items-center gap-4">
+                  <a
+                    href={selectedProjectData.liveUrl}
+                    className="px-6 py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors flex items-center gap-2"
                   >
                     <ExternalLink size={16} />
                     Live Demo
                   </a>
                   <a
-                    href={project.githubUrl}
-                    className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
+                    href={selectedProjectData.githubUrl}
+                    className="px-6 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-dark-200 transition-colors flex items-center gap-2"
                   >
                     <Github size={16} />
-                    Code
+                    View Code
                   </a>
                 </div>
               </div>
-                </div>
-              </ElectricBorder>
-            </motion.div>
-          ))}
-        </div>
-
-        {selectedProject && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
-            onClick={() => setSelectedProject(null)}
-          >
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              className="bg-white dark:bg-dark-100 rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {(() => {
-                const project = projects.find(p => p.id === selectedProject)
-                if (!project) return null
-                
-                return (
-                  <div>
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-64 object-cover"
-                    />
-                    <div className="p-6">
-                      <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
-                        {project.title}
-                      </h3>
-                      <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                        {project.longDescription}
-                      </p>
-                      
-                      <div className="flex flex-wrap gap-2 mb-6">
-                        {project.tech.map((tech, index) => (
-                          <span
-                            key={index}
-                            className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-full text-sm"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-
-                      <div className="flex items-center gap-4">
-                        <a
-                          href={project.liveUrl}
-                          className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2"
-                        >
-                          <ExternalLink size={16} />
-                          Live Demo
-                        </a>
-                        <a
-                          href={project.githubUrl}
-                          className="px-6 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-dark-200 transition-colors flex items-center gap-2"
-                        >
-                          <Github size={16} />
-                          View Code
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                )
-              })()}
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         )}
       </div>
-      
-      <GradualBlur
-        position="top"
-        height="8rem"
-        strength={2.5}
-        divCount={6}
-        opacity={0.7}
-      />
-      
-      <GradualBlur
-        position="bottom"
-        height="8rem"
-        strength={2.5}
-        divCount={6}
-        opacity={0.7}
-      />
     </section>
   )
 }

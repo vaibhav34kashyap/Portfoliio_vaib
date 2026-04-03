@@ -20,7 +20,9 @@ export default function RootLayout({ children }) {
       <body suppressHydrationWarning>
         <ThemeProvider>
           <PerformanceMonitor />
-          {children}
+          <div style={{ overflowX: 'hidden', width: '100%' }}>
+            {children}
+          </div>
         </ThemeProvider>
       </body>
     </html>

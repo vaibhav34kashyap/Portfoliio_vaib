@@ -48,7 +48,7 @@ const GradualBlur = ({
       WebkitMaskImage: `linear-gradient(${direction}, ${gradient})`,
       backdropFilter: `blur(${blurValue.toFixed(2)}px)`,
       WebkitBackdropFilter: `blur(${blurValue.toFixed(2)}px)`,
-      background: `rgba(0, 0, 0, ${progress * 0.1})`,
+      background: 'transparent',
       opacity: opacity,
     }
 
