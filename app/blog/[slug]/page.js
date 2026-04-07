@@ -105,7 +105,7 @@ export default function BlogPost({ params }) {
       <Header />
       
       <main className="pt-0">
-        {/* Hero Section */}
+  
         <section className="py-16 relative overflow-hidden">
           <div className="absolute inset-0">
             <img
@@ -175,7 +175,7 @@ export default function BlogPost({ params }) {
           </div>
         </section>
 
-        {/* Content Section */}
+     
         <section className="py-16 relative overflow-hidden">
           <div className="absolute inset-0 dark:hidden bg-[linear-gradient(rgba(16,185,129,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(16,185,129,0.07)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
           <div className="absolute inset-0 hidden dark:block bg-[linear-gradient(rgba(156,163,175,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(156,163,175,0.15)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
@@ -221,7 +221,7 @@ export default function BlogPost({ params }) {
                   </motion.div>
                 </div>
 
-                {/* Sidebar */}
+       
                 <div className="lg:col-span-1">
                   <motion.div 
                     className="sticky top-24 space-y-6"
