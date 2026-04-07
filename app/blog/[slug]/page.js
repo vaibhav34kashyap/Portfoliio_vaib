@@ -250,7 +250,6 @@ export default function BlogPost({ params }) {
                       </div>
                     </div>
 
-                    {/* Share */}
                     <div className="bg-white dark:bg-dark-100 rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
                       <h3 className="font-semibold text-gray-900 dark:text-white mb-4">Share Article</h3>
                       <button className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition-colors shadow-lg shadow-emerald-500/20">
@@ -265,7 +264,6 @@ export default function BlogPost({ params }) {
           </div>
         </section>
       </main>
-
       <Footer />
     </div>
   )
