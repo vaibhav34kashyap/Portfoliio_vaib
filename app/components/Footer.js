@@ -4,9 +4,9 @@ import { Github, Linkedin, Mail } from 'lucide-react'
 
 export default function Footer() {
   const socialLinks = [
-    { name: 'GitHub', icon: <Github size={18} />, url: 'https://github.com/mohit-singh-rawat' },
-    { name: 'LinkedIn', icon: <Linkedin size={18} />, url: 'https://www.linkedin.com/in/mohit-singh-rawat-2a1112299/' },
-    { name: 'Email', icon: <Mail size={18} />, url: 'mailto:rawat.mohitsingh7455@gmail.com' },
+    { name: 'GitHub', icon: <Github size={18} />, url: 'https://github.com/vaibhav34kashyap' },
+    { name: 'LinkedIn', icon: <Linkedin size={18} />, url: 'https://www.linkedin.com/in/vaibhav-kashyap-7489201b5' },
+    { name: 'Email', icon: <Mail size={18} />, url: 'mailto:vaibhav34kashyap@gmail.com' },
   ]
 
   const columns = [
@@ -22,8 +22,8 @@ export default function Footer() {
     {
       heading: 'Resources',
       links: [
-        { name: 'GitHub', href: 'https://github.com/mohit-singh-rawat' },
-        { name: 'LinkedIn', href: 'https://www.linkedin.com/in/mohit-singh-rawat-2a1112299/' },
+        { name: 'GitHub', href: 'https://github.com/vaibhav34kashyap' },
+        { name: 'LinkedIn', href: 'https://www.linkedin.com/in/vaibhav-kashyap-7489201b5' },
         { name: 'Resume', href: '#' },
       ],
     },
@@ -31,7 +31,7 @@ export default function Footer() {
       heading: 'Contact',
       links: [
         { name: 'Contact Me', href: '#contact' },
-        { name: 'Email', href: 'mailto:rawat.mohitsingh7455@gmail.com' },
+        { name: 'Email', href: 'mailto:vaibhav34kashyap@gmail.com' },
         { name: 'Hire Me', href: '#contact' },
       ],
     },
@@ -47,8 +47,10 @@ export default function Footer() {
           {/* Left — Brand */}
           <div className="flex flex-col gap-4 max-w-xs">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-md bg-emerald-500 flex items-center justify-center text-white font-black text-sm">M</div>
-              <span className="font-bold text-gray-900 dark:text-white text-lg">Mohit Singh Rawat</span>
+              <div className="w-10 h-9 rounded-md bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center p-0.5">
+                <img src="/assets/images/logo (3).png" alt="Vaibhav Kashyap Logo" className="w-full h-full object-contain" />
+              </div>
+              <span className="text-2xl font-bold text-gray-900 dark:text-white">VK</span>
             </div>
             <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
               Frontend Developer crafting clean, responsive web experiences — making ideas easier to build, share, and scale.
@@ -96,7 +98,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-gray-400 dark:text-gray-500">
-          <p>© {new Date().getFullYear()} Mohit Singh Rawat. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Vaibhav Kashyap. All rights reserved.</p>
           <div className="flex gap-5">
             <a href="#" className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Terms of Service</a>

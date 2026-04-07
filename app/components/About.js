@@ -52,6 +52,10 @@ function TabSection({ features }) {
             {features.map((feature, index) => (
               <motion.div
                 key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
                 whileHover={{ borderColor: 'rgb(16,185,129)', backgroundColor: 'rgba(16,185,129,0.04)' }}
                 className="flex items-start gap-4 p-5 border border-gray-200 dark:border-gray-700 bg-white dark:bg-dark-100 rounded-lg cursor-default group transition-all duration-200"
               >
@@ -76,14 +80,21 @@ function TabSection({ features }) {
             transition={{ duration: 0.2 }}
             className="border border-gray-200 dark:border-gray-700 bg-white dark:bg-dark-100 p-6 sm:p-8"
           >
-            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
-              With a strong foundation in frontend technologies, I have been crafting
-              beautiful user interfaces that make a difference.
-            </p>
-            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
-              I am particularly passionate about modern UI/UX design, smooth animations, and creating
-              intuitive user experiences that delight users and solve real-world problems.
-            </p>
+            {[
+              'With a strong foundation in frontend technologies, I have been crafting beautiful user interfaces that make a difference.',
+              'I am particularly passionate about modern UI/UX design, smooth animations, and creating intuitive user experiences that delight users and solve real-world problems.'
+            ].map((text, i) => (
+              <motion.p
+                key={i}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.15 }}
+                className={`text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed${i === 0 ? ' mb-4' : ''}`}
+              >
+                {text}
+              </motion.p>
+            ))}
           </motion.div>
         )}
       </AnimatePresence>
@@ -93,9 +104,11 @@ function TabSection({ features }) {
 
 export default function About() {
   const skills = [
-    'React.js', 'Next.js', 'JavaScript', 'TypeScript', 'Redux Toolkit', 'Redux Thunk',
+    'React.js', 'Next.js', 'JavaScript',
     'HTML5', 'CSS3', 'Tailwind CSS', 'Framer Motion', 'Material UI', 'React Bootstrap',
-    'Git', 'Responsive Design', 'UI/UX Design', 'Frontend Development', 'Web Animations'
+    'Git', 'Responsive Design', 'UI/UX Design', 'Frontend Development', 'Web Animations',
+
+    'HTML', 'MUI', 'GitHub',  'Bootstrap',
   ]
 
   const features = [
@@ -107,24 +120,20 @@ export default function About() {
 
   const tickerSkills = [...skills, ...skills]
 
+  const containerVariants = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.08 } }
+  }
+  const itemVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.3 } }
+  }
+
   return (
     <section id="about" className="bg-gradient-to-br from-emerald-50 via-white to-emerald-50 border-b border-emerald-100 dark:from-emerald-950/20 dark:via-dark-200 dark:to-emerald-950/20 dark:border-emerald-900/30 relative overflow-hidden">
       <GradualBlur position="top" height="6rem" strength={2} divCount={5} opacity={0.6} />
 
-       <div className="border-y border-gray-200 dark:border-gray-700 bg-white dark:bg-dark-100 overflow-hidden py-3">
-        <motion.div
-          className="flex gap-8 whitespace-nowrap"
-          animate={{ x: ['0%', '-50%'] }}
-          transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-        >
-          {tickerSkills.map((skill, index) => (
-            <span key={index} className="flex items-center gap-3 text-sm font-semibold text-gray-700 dark:text-gray-300 shrink-0">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
-              {skill}
-            </span>
-          ))}
-        </motion.div>
-      </div>
+      
 
 
       <div className="container mx-auto px-4 sm:px-8 py-8 sm:py-10 lg:py-10">
@@ -142,9 +151,7 @@ export default function About() {
           <BlurReveal delay={0.3}>
             <div className="flex flex-col gap-6">
               <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-                I am a passionate frontend developer with expertise in building modern web applications.
-                Currently working as a Web Developer at RowthTech, I specialize in creating stunning user interfaces
-                and interactive experiences using React, Next.js, and modern frontend technologies.
+                Passionate UI Developer with 2+ years of experience specializing in building beautiful, responsive interfaces. Currently working at RowthTech, I craft pixel-perfect designs and seamless user experiences using React, Next.js, Tailwind CSS, and modern design systems.
               </p>
               <div className="grid grid-cols-2 gap-4">
                 {[
@@ -158,7 +165,7 @@ export default function About() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.1, delay: i * 0.1 }}
+                    transition={{ duration: 0.35, delay: i * 0.1 }}
                     whileHover={{ scale: 1.07, borderColor: 'rgb(16,185,129)' }}
                     className="border border-gray-200 dark:border-gray-700 p-4 bg-white dark:bg-dark-100 rounded-lg shadow transition-all duration-200 cursor-pointer flex flex-row items-center gap-4 hover:bg-emerald-50 dark:hover:bg-emerald-950/30 hover:border-emerald-500 dark:hover:border-emerald-500"
                   >

@@ -3,14 +3,14 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 
 const initialState = {
-  theme: 'light',
+  theme: 'dark',
   setTheme: () => null,
 }
 
 const ThemeProviderContext = createContext(initialState)
 
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState('light')
+  const [theme, setTheme] = useState('dark')
 
   useEffect(() => {
     const root = window.document.documentElement
@@ -28,9 +28,7 @@ export function ThemeProvider({ children }) {
 
   useEffect(() => {
     const storedTheme = localStorage.getItem('theme')
-    if (storedTheme) {
-      setTheme(storedTheme)
-    }
+    setTheme(storedTheme || 'dark')
   }, [])
 
   return (

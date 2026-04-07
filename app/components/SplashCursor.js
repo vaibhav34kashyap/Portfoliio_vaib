@@ -506,8 +506,10 @@ function SplashCursor({
       if (resizeCanvas()) initFramebuffers()
       updateColors(dt)
       applyInputs()
-      step(dt)
-      render(null)
+      if (hasActivity) {
+        step(dt)
+        render(null)
+      }
       requestAnimationFrame(updateFrame)
     }
 
@@ -721,8 +723,14 @@ function SplashCursor({
       return hash
     }
 
+    let hasActivity = false
+    let activityTimer = null
+
     let ticking = false
     const handleMouseMove = (e) => {
+      hasActivity = true
+      clearTimeout(activityTimer)
+      activityTimer = setTimeout(() => { hasActivity = false }, 1500)
       if (!ticking) {
         requestAnimationFrame(() => {
           let pointer = pointers[0]

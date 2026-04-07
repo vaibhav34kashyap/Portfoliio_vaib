@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Briefcase, Calendar, MapPin, TrendingUp, Code, Users } from 'lucide-react'
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import BlurReveal from './BlurReveal'
 import GradualBlur from './GradualBlur'
 
@@ -12,36 +12,36 @@ export default function Experience() {
   const experiences = [
     {
       id: 1,
-      title: 'Web Developer',
+      title: 'Frontend UI Developer',
       company: 'RowthTech',
       period: '2023 - Present',
       location: 'India',
       type: 'Full-time',
       color: 'from-emerald-500 to-teal-600',
       bgColor: 'from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20',
-      description: 'Leading frontend development for enterprise applications. Built 9+ production applications including healthcare, e-commerce, and fintech platforms.',
+      description: 'Crafting pixel-perfect, responsive UIs for enterprise-grade applications. Specialized in translating Figma/XD designs into high-quality React & Next.js interfaces across healthcare, e-commerce, and fintech domains.',
       achievements: [
-        { icon: Code, text: 'Developed 9+ production-ready applications', metric: '9+' },
-        { icon: TrendingUp, text: 'Improved application performance by 40%', metric: '40%' },
-        { icon: Users, text: 'Implemented modern UI/UX with React & Next.js', metric: '100%' },
-        { icon: Briefcase, text: 'Led frontend architecture decisions', metric: '5+' }
+        { icon: Code, text: 'Built 9+ production UI applications from Figma to code', metric: '9+' },
+        { icon: TrendingUp, text: 'Improved UI rendering performance by 40%', metric: '40%' },
+        { icon: Users, text: 'Delivered pixel-perfect designs with Tailwind CSS', metric: '100%' },
+        { icon: Briefcase, text: 'Created reusable component libraries', metric: '5+' }
       ]
     },
     {
       id: 2,
-      title: 'Frontend Developer',
+      title: 'Frontend UI Developer',
       company: 'Freelance',
       period: '2022 - 2023',
       location: 'Remote',
       type: 'Contract',
       color: 'from-teal-500 to-emerald-600',
       bgColor: 'from-teal-50 to-emerald-50 dark:from-teal-900/20 dark:to-emerald-900/20',
-      description: 'Specialized in building responsive web applications using React, Next.js, and modern frontend technologies.',
+      description: 'Designed and developed responsive, visually engaging UIs for diverse clients. Focused on clean layouts, smooth animations, and cross-browser compatible interfaces using React and Tailwind CSS.',
       achievements: [
-        { icon: Users, text: 'Delivered 15+ client projects successfully', metric: '15+' },
-        { icon: TrendingUp, text: 'Maintained 98% client satisfaction rate', metric: '98%' },
-        { icon: Code, text: 'Specialized in React & Next.js development', metric: '100%' },
-        { icon: Briefcase, text: 'Built custom animation libraries', metric: '3+' }
+        { icon: Users, text: 'Delivered 15+ client UI projects end-to-end', metric: '15+' },
+        { icon: TrendingUp, text: 'Maintained 98% client satisfaction on UI quality', metric: '98%' },
+        { icon: Code, text: 'Built responsive UIs with React & Tailwind CSS', metric: '100%' },
+        { icon: Briefcase, text: 'Created custom Framer Motion animation systems', metric: '3+' }
       ]
     }
   ]
@@ -69,8 +69,98 @@ export default function Experience() {
     }
   }
 
+  const codeSnippets = [
+    { text: 'const App = () => {}', x: '2%', y: '8%', delay: 0, duration: 15 },
+    { text: 'import React from "react"', x: '60%', y: '5%', delay: 2, duration: 18 },
+    { text: 'useState(null)', x: '80%', y: '30%', delay: 1, duration: 14 },
+    { text: '<Component />', x: '3%', y: '45%', delay: 3, duration: 16 },
+    { text: 'npm run dev', x: '70%', y: '75%', delay: 0.5, duration: 13 },
+    { text: 'flex items-center', x: '15%', y: '85%', delay: 2.5, duration: 17 },
+    { text: 'async/await', x: '45%', y: '90%', delay: 1.5, duration: 12 },
+    { text: 'git commit -m', x: '55%', y: '55%', delay: 4, duration: 19 },
+    { text: 'border-radius: 12px', x: '25%', y: '15%', delay: 0.8, duration: 15 },
+    { text: 'z-index: 10', x: '88%', y: '50%', delay: 3.5, duration: 11 },
+    { text: 'type Props = {}', x: '40%', y: '70%', delay: 2, duration: 16 },
+    { text: '.map((item) =>)', x: '8%', y: '60%', delay: 1, duration: 14 },
+  ]
+
+  const shapes = [
+    { size: 80, x: '5%', y: '10%', delay: 0, duration: 8, rotateX: 45, rotateY: 45, color: 'from-emerald-400/50 to-teal-400/50' },
+    { size: 50, x: '85%', y: '15%', delay: 1, duration: 10, rotateX: 60, rotateY: 30, color: 'from-teal-400/45 to-emerald-400/45' },
+    { size: 100, x: '75%', y: '60%', delay: 2, duration: 12, rotateX: 30, rotateY: 60, color: 'from-emerald-500/40 to-teal-500/40' },
+    { size: 60, x: '10%', y: '70%', delay: 0.5, duration: 9, rotateX: 50, rotateY: 20, color: 'from-teal-300/50 to-emerald-300/50' },
+    { size: 40, x: '50%', y: '5%', delay: 1.5, duration: 11, rotateX: 20, rotateY: 70, color: 'from-emerald-400/45 to-teal-600/45' },
+    { size: 70, x: '30%', y: '80%', delay: 3, duration: 7, rotateX: 70, rotateY: 40, color: 'from-teal-400/40 to-emerald-400/40' },
+  ]
+
   return (
     <section id="experience" className="py-12 sm:py-16 lg:py-12 bg-gray-50 dark:bg-dark-300 relative overflow-hidden">
+
+      {/* Floating Code Snippets */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        {codeSnippets.map((snippet, i) => (
+          <motion.div
+            key={i}
+            className="absolute font-mono text-xs sm:text-sm text-emerald-600/70 dark:text-emerald-400/60 whitespace-nowrap select-none"
+            style={{ left: snippet.x, top: snippet.y }}
+            animate={{
+              opacity: [0, 1, 1, 0],
+              y: [0, -40],
+              x: [0, 10, -5, 0],
+            }}
+            transition={{
+              duration: snippet.duration,
+              delay: snippet.delay,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+          >
+            {snippet.text}
+          </motion.div>
+        ))}
+      </div>
+
+      {/* 3D Floating Shapes Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none" style={{ perspective: '800px' }}>
+        {shapes.map((shape, i) => (
+          <motion.div
+            key={i}
+            className={`absolute rounded-xl bg-gradient-to-br ${shape.color} border border-emerald-400/50 dark:border-emerald-400/40`}
+            style={{
+              width: shape.size,
+              height: shape.size,
+              left: shape.x,
+              top: shape.y,
+              transformStyle: 'preserve-3d',
+            }}
+            animate={{
+              rotateX: [shape.rotateX, shape.rotateX + 180, shape.rotateX + 360],
+              rotateY: [shape.rotateY, shape.rotateY + 180, shape.rotateY + 360],
+              y: [0, -20, 0],
+            }}
+            transition={{
+              duration: shape.duration,
+              delay: shape.delay,
+              repeat: Infinity,
+              ease: 'linear',
+            }}
+          />
+        ))}
+
+        {/* Glowing orbs */}
+        <motion.div
+          className="absolute w-96 h-96 rounded-full bg-emerald-400/20 dark:bg-emerald-400/30 blur-3xl"
+          style={{ left: '10%', top: '20%' }}
+          animate={{ scale: [1, 1.3, 1], opacity: [0.6, 1, 0.6] }}
+          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+        />
+        <motion.div
+          className="absolute w-80 h-80 rounded-full bg-teal-400/20 dark:bg-teal-400/30 blur-3xl"
+          style={{ right: '10%', bottom: '20%' }}
+          animate={{ scale: [1.2, 1, 1.2], opacity: [0.5, 0.9, 0.5] }}
+          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+        />
+      </div>
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <BlurReveal className="text-center mb-12 sm:mb-16">

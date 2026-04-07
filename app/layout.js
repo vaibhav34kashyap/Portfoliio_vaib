@@ -1,12 +1,16 @@
 import './globals.css'
 import { ThemeProvider } from './components/ThemeProvider'
 import PerformanceMonitor from './components/PerformanceMonitor'
+import Sidebar from './components/Sidebar'
 
 export const metadata = {
-  title: 'Mohit Singh Rawat - Frontend Developer',
-  description: 'Portfolio of Mohit Singh Rawat, a passionate frontend developer specializing in React, Next.js, and modern web technologies.',
+  title: 'Vaibhav Kashyap - Frontend UI Developer',
+  description: 'Portfolio of Vaibhav Kashyap, a passionate frontend UI developer specializing in React, Next.js, and modern web technologies.',
   keywords: 'frontend developer, react, nextjs, portfolio, web development',
-  authors: [{ name: 'Mohit Singh Rawat' }],
+  authors: [{ name: 'Vaibhav Kashyap' }],
+  icons: {
+    icon: '/assets/images/Fav.png',
+  },
 }
 
 export const viewport = {
@@ -20,6 +24,7 @@ export default function RootLayout({ children }) {
       <body suppressHydrationWarning>
         <ThemeProvider>
           <PerformanceMonitor />
+          <Sidebar />
           <div style={{ overflowX: 'hidden', width: '100%' }}>
             {children}
           </div>

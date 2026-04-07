@@ -21,6 +21,13 @@ body {
   position: relative;
   width: 100%;
   max-width: 100vw;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* GPU-accelerate all framer-motion animated elements */
+[data-framer-component-type], .motion-div {
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .gradient-text {

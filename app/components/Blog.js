@@ -11,7 +11,7 @@ export default function Blog() {
   const [hoveredPost, setHoveredPost] = useState(null)
   const [filteredPosts, setFilteredPosts] = useState([])
 
-  const categories = ['All', 'React', 'Next.js', 'JavaScript', 'Web Development', 'UI/UX']
+  const categories = ['All', 'React', 'Next.js', 'JavaScript', 'Web Development', 'UI/UX', 'Figma', 'CSS']
 
   const blogPosts = [
     {
@@ -125,6 +125,76 @@ export default function Blog() {
       likes: 87,
       color: 'from-indigo-500 to-purple-600',
       bgGradient: 'from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20'
+    },
+    {
+      id: 9,
+      title: 'Figma to Code: Bridging the Gap Between Design and Development',
+      excerpt: 'Learn how to efficiently translate Figma designs into pixel-perfect, responsive code using modern CSS and component-based workflows.',
+      category: 'UI/UX',
+      date: '2024-02-10',
+      readTime: '7 min read',
+      image: 'https://images.unsplash.com/photo-1609921212029-bb5a28e60960?w=800&h=400&fit=crop',
+      tags: ['Figma', 'UI/UX', 'CSS'],
+      views: 1340,
+      likes: 105,
+      color: 'from-violet-500 to-fuchsia-600',
+      bgGradient: 'from-violet-50 to-fuchsia-50 dark:from-violet-900/20 dark:to-fuchsia-900/20'
+    },
+    {
+      id: 10,
+      title: 'Micro-Interactions: The Secret to Delightful UI',
+      excerpt: 'Discover how small, purposeful animations and micro-interactions can dramatically improve user experience and engagement.',
+      category: 'UI/UX',
+      date: '2024-02-05',
+      readTime: '6 min read',
+      image: 'https://images.unsplash.com/photo-1558655146-d09347e92766?w=800&h=400&fit=crop',
+      tags: ['UI/UX', 'Animation', 'Framer Motion'],
+      views: 978,
+      likes: 81,
+      color: 'from-rose-500 to-pink-600',
+      bgGradient: 'from-rose-50 to-pink-50 dark:from-rose-900/20 dark:to-pink-900/20'
+    },
+    {
+      id: 11,
+      title: 'Tailwind CSS Tips Every UI Developer Should Know',
+      excerpt: 'Practical Tailwind CSS tricks, utility patterns, and component recipes that speed up your UI development workflow.',
+      category: 'CSS',
+      date: '2024-01-28',
+      readTime: '5 min read',
+      image: 'https://images.unsplash.com/photo-1523437113738-bbd3cc89fb19?w=800&h=400&fit=crop',
+      tags: ['Tailwind CSS', 'CSS', 'UI Development'],
+      views: 1520,
+      likes: 130,
+      color: 'from-sky-500 to-cyan-600',
+      bgGradient: 'from-sky-50 to-cyan-50 dark:from-sky-900/20 dark:to-cyan-900/20'
+    },
+    {
+      id: 12,
+      title: 'Accessible UI: Building Inclusive Web Experiences',
+      excerpt: 'A practical guide to web accessibility — ARIA roles, keyboard navigation, color contrast, and tools to audit your UI.',
+      category: 'UI/UX',
+      date: '2024-01-22',
+      readTime: '8 min read',
+      image: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?w=800&h=400&fit=crop',
+      tags: ['Accessibility', 'UI/UX', 'ARIA'],
+      views: 860,
+      likes: 74,
+      color: 'from-green-500 to-emerald-600',
+      bgGradient: 'from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20'
+    },
+    {
+      id: 13,
+      title: 'Dark Mode Done Right: CSS Variables & Theming',
+      excerpt: 'Implement a robust dark/light mode system using CSS custom properties, Tailwind, and React context without flickering.',
+      category: 'CSS',
+      date: '2024-01-18',
+      readTime: '6 min read',
+      image: 'https://images.unsplash.com/photo-1550439062-609e1531270e?w=800&h=400&fit=crop',
+      tags: ['CSS', 'Dark Mode', 'Theming'],
+      views: 1190,
+      likes: 98,
+      color: 'from-slate-500 to-gray-700',
+      bgGradient: 'from-slate-50 to-gray-100 dark:from-slate-900/20 dark:to-gray-800/20'
     }
   ]
 

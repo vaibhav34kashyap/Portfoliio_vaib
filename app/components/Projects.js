@@ -1,31 +1,32 @@
 'use client'
 
-import { ExternalLink, Github, Eye, X } from 'lucide-react'
+import { ExternalLink, Github, Eye, X, ChevronDown } from 'lucide-react'
 import { useState } from 'react'
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null)
+  const [showAll, setShowAll] = useState(false)
 
   const projects = [
     {
       id: 1,
       title: 'Probill EHR & RCM',
-      description: 'A comprehensive Electronic Health Record and Revenue Cycle Management system for healthcare providers with patient management, billing, and reporting features.',
-      longDescription: 'Built a complete healthcare management system with patient records, billing automation, and compliance features. Implemented HIPAA-compliant data handling, HL7 FHIR integration, and comprehensive reporting dashboards for healthcare providers.',
-      image: 'https://images.unsplash.com/photo-1638202993928-7267aad84c31?w=600&h=400&fit=crop',
-      tech: ['React', 'Node.js', 'MongoDB', 'Express', 'HIPAA Compliance', 'HL7 FHIR', 'Healthcare APIs'],
-      liveUrl: 'https://clinic.probillrcm.com',
-      githubUrl: 'https://github.com/code-rowthtech/RCM-PRO-BILL-CLINIC.git'
+      description: 'Designed and developed the complete UI for an Electronic Health Record and Revenue Cycle Management system, including patient dashboards, billing workflows, and reporting interfaces.',
+      longDescription: 'Led the frontend development of a healthcare management platform, crafting responsive and accessible UI components for patient records, billing automation, and compliance workflows. Built interactive dashboards using Chart.js, integrated FullCalendar for scheduling, and used React-Bootstrap to deliver a clean, consistent design across all modules.',
+      image: '../assets/images/probill.png',
+      tech: ['React', 'HTML5', 'CSS', 'Bootstrap', 'React-Bootstrap', 'React-icon', 'Animate.css', 'Chart.js', 'FullCalendar', 'React-Select', 'Animation'],
+      liveUrl: 'https://probillrcm.com/',
+      githubUrl: 'https://github.com/code-rowthtech/RCM_landing.git'
     },
     {
       id: 2,
-      title: 'Platypus Crypto Exchange',
+      title: 'Diamante',
       description: 'A secure cryptocurrency exchange platform with real-time trading, wallet management, and advanced charting capabilities.',
       longDescription: 'Developed a full-featured cryptocurrency exchange with real-time trading engine, secure wallet management, and advanced charting tools. Integrated blockchain APIs, WebSocket connections for live data, and implemented robust security measures.',
-      image: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&h=400&fit=crop',
-      tech: ['React', 'Node.js', 'WebSockets', 'Blockchain', 'Web3', 'Express', 'Coingecko API'],
-      liveUrl: '#',
-      githubUrl: '#'
+      image: '../assets/images/diamante.png',
+      tech: ['React', 'HTML5', 'CSS', 'Bootstrap', 'React-Bootstrap', 'React-icon', 'Animate.css', 'Chart.js', 'FullCalendar', 'React-Select', 'Animation'],
+      liveUrl: 'https://tequilaredondeldiamante.com/',
+      githubUrl: 'https://github.com/code-rowthtech/DIAMANTE.git'
     },
     {
       id: 3,
@@ -33,8 +34,8 @@ export default function Projects() {
       description: 'A delightful e-commerce platform for artisanal chocolate products with subscription services, gift options, and personalized recommendations.',
       longDescription: 'Created a premium e-commerce experience for chocolate products featuring subscription management, personalized recommendations, and gift services. Implemented Stripe payments, AWS hosting, and performance optimizations for enhanced user experience.',
       image: 'https://images.unsplash.com/photo-1548907040-4baa42d10919?w=600&h=400&fit=crop',
-      tech: ['React', 'Redux', 'Stripe', 'NestJS', 'MongoDB', 'AWS', 'Site Performance'],
-      liveUrl: '#',
+      tech: ['React', 'HTML5', 'CSS', 'Bootstrap', 'React-Bootstrap', 'React-icon', 'Animate.css', 'Chart.js', 'FullCalendar', 'React-Select', 'Animation'],
+      liveUrl: 'https://www.mozimo.in/',
       githubUrl: '#'
     },
     {
@@ -42,30 +43,30 @@ export default function Projects() {
       title: 'RowthTech Company Website',
       description: 'Corporate website for RowthTech showcasing services, portfolio, and company information with modern design and animations.',
       longDescription: 'Designed and developed the official RowthTech company website featuring service showcases, portfolio displays, and corporate information. Implemented modern UI/UX principles with smooth animations and responsive design.',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop',
+      image: '../assets/images/rowthtech.png',
       tech: ['React', 'Next.js', 'Tailwind CSS', 'Framer Motion', 'SEO'],
       liveUrl: 'https://rowthtech.com/',
       githubUrl: 'https://github.com/code-rowthtech/rowthtech_react.git'
     },
     {
       id: 5,
-      title: 'Almata CyberRisk',
-      description: 'Cybersecurity risk assessment platform providing comprehensive security analysis and threat detection for enterprises.',
-      longDescription: 'Developed a sophisticated cybersecurity platform for risk assessment and threat analysis. Features include vulnerability scanning, compliance reporting, and real-time security monitoring with advanced analytics dashboards.',
-      image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&h=400&fit=crop',
-      tech: ['React', 'Node.js', 'Security APIs', 'Analytics', 'Dashboard', 'MongoDB'],
-      liveUrl: 'https://riskreport.almata.co.jp',
-      githubUrl: ''
+      title: 'DonCruz Platinium',
+      description: 'A premium luxury brand website for DonCruz Platinium showcasing exclusive collections, elegant product displays, and a refined experience for high-end clientele.',
+      longDescription: 'Designed and developed a sophisticated luxury brand platform for DonCruz Platinium, featuring elegant UI, smooth animations, and premium product showcases. Built fully responsive layouts with a focus on visual storytelling, strong brand identity, and delivering a seamless high-end user experience.',
+      image: '../assets/images/Don.png',
+      tech: ['React', 'HTML5', 'CSS', 'Bootstrap', 'React-Bootstrap', 'React-icon', 'Animate.css', 'Chart.js', 'FullCalendar', 'React-Select', 'Animation'],
+      liveUrl: 'https://doncruzplatinium.com/',
+      githubUrl: 'https://github.com/code-rowthtech/DON_CRUZ.git'
     },
     {
       id: 6,
-      title: 'AccountPro Management',
-      description: 'Comprehensive business management platform for accounting, invoicing, and financial reporting with automated workflows.',
-      longDescription: 'Built a complete business management solution featuring accounting modules, automated invoicing, financial reporting, and workflow management. Integrated payment gateways and implemented role-based access control.',
-      image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=400&fit=crop',
-      tech: ['React', 'Node.js', 'Express', 'MongoDB', 'Payment APIs', 'PDF Generation'],
-      liveUrl: 'https://accountpro.co.in',
-      githubUrl: 'https://github.com/code-rowthtech/ACCOUNT-PRO-WEBSITE.git'
+      title: 'RowthBMG - Business Management',
+      description: 'A smart business management platform for streamlining operations, managing invoices, tracking finances, and automating day-to-day workflows for growing businesses.',
+      longDescription: 'Designed and developed the UI for RowthBMG, a comprehensive business management solution featuring modules for accounting, invoicing, financial reporting, and workflow automation. Built clean, intuitive dashboards and responsive interfaces to help businesses manage their operations efficiently with role-based access and seamless user experience.',
+      image: '../assets/images/rowthbmg.png',
+      tech: ['React', 'HTML5', 'CSS', 'Bootstrap', 'React-Bootstrap', 'React-icon', 'Animation'],
+      liveUrl: 'https://rowthbmg.com',
+      githubUrl: 'https://github.com/code-rowthtech/rowth_offshore.git'
     },
     {
       id: 7,
@@ -79,24 +80,55 @@ export default function Projects() {
     },
     {
       id: 8,
-      title: 'FootonShoes E-commerce',
-      description: 'Modern e-commerce platform for footwear with advanced filtering, size guides, and seamless shopping experience.',
-      longDescription: 'Developed a comprehensive shoe e-commerce platform with advanced product filtering, interactive size guides, wishlist functionality, and streamlined checkout process. Implemented inventory management and order tracking.',
-      image: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=600&h=400&fit=crop',
-      tech: ['React', 'Redux', 'E-commerce', 'Stripe', 'Product Catalog', 'Inventory Management'],
+      title: 'Arc-Providers',
+      description: 'Transcranial Magnetic Stimulation (TMS) offers numerous advantages over prescribed medications for treating mental health issues.',
+      longDescription: "TMS is a safe, effective non-drug treatment for depression. It works by sending magnetic pulses to stimulate neurons in the brain's mood-regulating area. TMS is FDA-cleared and non-invasive.",
+      image: '../assets/images/Arc.png',
+      tech: ['React', 'HTML5', 'CSS', 'Bootstrap', 'React-Bootstrap', 'React-icon', 'Animation'],
+      liveUrl: 'https://tms.arcproviders.com/',
+      githubUrl: 'https://github.com/code-rowthtech/arc_web.git'
+    },
+    {
+      id: 9,
+      title: 'Endoorphin',
+      description: 'Your ultimate platform for connecting with certified personal trainers and scheduling fitness sessions at your convenience.',
+      longDescription: 'Your ultimate platform for connecting with certified personal trainers and scheduling fitness sessions at your convenience. Endoorphin offers a seamless experience to find, book, and manage your fitness journey with expert guidance and personalized training plans.',
+      image: '../assets/images/Endoorphin.png',
+      tech: ['React', 'HTML5', 'CSS', 'Bootstrap', 'React-Bootstrap', 'React-icon', 'Animation'],
+      liveUrl: 'https://endoorphin.com/',
+      githubUrl: 'https://github.com/code-rowthtech/endoorphin_web.git'
+    },
+    {
+      id: 10,
+      title: 'Legalup',
+      description: 'Providing high-quality legal services to individuals, companies, and investors in Cyprus and internationally.',
+      longDescription: 'E. Ioannou Charalampous LLC is a boutique law firm based in Limassol, operating in Cyprus and Greece, with professional activity extending to Athens. The firm advises individuals, businesses, and investors seeking clear and reliable legal guidance..',
+      image: '../assets/images/Legalup.png',
+      tech: ['React', 'HTML5', 'CSS', 'Bootstrap', 'React-Bootstrap', 'React-icon', 'Animation'],
+      liveUrl: 'https://iclawfirmcy.info/',
+      githubUrl: 'https://github.com/code-rowthtech/legal-tech-cyprus-website.git'
+    },
+    {
+      id: 11,
+      title: 'Event',
+      description: 'A comprehensive event management platform for planning, organizing, and executing seamless events of all scales.',
+      longDescription: 'Designed and developed a full-featured event management platform that enables organizers to plan, schedule, and manage events effortlessly. The platform includes features for venue management, guest registration, ticketing, agenda planning, and real-time updates — delivering a smooth and professional experience for both organizers and attendees.',
+      image: '../assets/images/Event.png',
+      tech: ['React', 'WebSockets', 'Node.js', 'Real-time Bidding', 'Payment Gateway', 'MongoDB'],
       liveUrl: '#',
       githubUrl: '#'
     },
     {
-      id: 9,
-      title: 'TaskManager Pro',
-      description: 'Team productivity platform for project management, task tracking, and workflow automation with real-time collaboration.',
-      longDescription: 'Built a comprehensive team management solution featuring project tracking, task assignment, progress monitoring, and team collaboration tools. Includes time tracking, reporting dashboards, and automated workflow management.',
-      image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop',
-      tech: ['React', 'Node.js', 'WebSockets', 'Project Management', 'Real-time Collaboration', 'Analytics'],
-      liveUrl: 'https://taskmanagerteam.rowthtech.com',
-      githubUrl: 'https://github.com/negi1307/Task-Management.git'
-    }
+      id: 12,
+      title: 'Legalup - Law Firm Website',
+      description: 'Providing high-quality legal services to individuals, companies, and investors in Cyprus and internationally.',
+      longDescription: 'E. Ioannou Charalampous LLC is a boutique law firm based in Limassol, operating in Cyprus and Greece, with professional activity extending to Athens. The firm advises individuals, businesses, and investors seeking clear and reliable legal guidance..',
+      image: '../assets/images/Legaldash.png',
+      tech: ['React', 'WebSockets', 'Node.js', 'Real-time Bidding', 'Payment Gateway', 'MongoDB'],
+
+      liveUrl: '#',
+      githubUrl: '#'
+    },
   ]
 
   const selectedProjectData = projects.find(p => p.id === selectedProject)
@@ -124,7 +156,7 @@ export default function Projects() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project) => (
+          {(showAll ? projects : projects.slice(0, 6)).map((project) => (
             <div
               key={project.id}
               className="group bg-white dark:bg-dark-100 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100 dark:border-gray-700 flex flex-col"
@@ -169,6 +201,8 @@ export default function Projects() {
                 <div className="flex items-center gap-4">
                   <a
                     href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 hover:text-emerald-800 dark:hover:text-emerald-300 transition-colors text-xs"
                   >
                     <ExternalLink size={13} />
@@ -187,6 +221,18 @@ export default function Projects() {
           ))}
         </div>
 
+        {projects.length > 6 && (
+          <div className="text-center mt-10">
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className="px-8 py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors font-semibold animate-bounce text-gray-400"
+            >
+              {showAll ? 'Show Less' : 'View All Projects'}
+              <ChevronDown size={18} className={`inline ml-2 transition-transform duration-300 ${showAll ? 'rotate-180' : ''}`} />
+            </button>
+          </div>
+        )}
+
         {/* Modal */}
         {selectedProject && selectedProjectData && (
           <div
@@ -201,7 +247,7 @@ export default function Projects() {
                 <img
                   src={selectedProjectData.image}
                   alt={selectedProjectData.title}
-                  className="w-full h-64 object-cover rounded-t-xl"
+                  className="w-full h-84 object-cover rounded-t-xl"
                 />
                 <button
                   onClick={() => setSelectedProject(null)}

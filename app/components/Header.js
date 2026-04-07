@@ -2,12 +2,12 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Moon, Sun, Menu, X } from 'lucide-react'
+import { Moon, Sun, Menu, X, Download } from 'lucide-react'
 import { useTheme } from './ThemeProvider'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-export default function Header() {
+export default function Header({ onSelect }) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const { theme, setTheme } = useTheme()
@@ -29,30 +29,20 @@ export default function Header() {
   }, [])
 
   const navItems = [
-    { name: 'Home', href: '/', type: 'link' },
-    { name: 'About', href: '#about', type: 'scroll' },
-    { name: 'Experience', href: '#experience', type: 'scroll' },
-    { name: 'Projects', href: '#projects', type: 'scroll' },
-    { name: 'Certifications', href: '#certifications', type: 'scroll' },
-    { name: 'Testimonials', href: '#testimonials', type: 'scroll' },
-    { name: 'Blog', href: '/blog', type: 'link' },
-    { name: 'Contact', href: '#contact', type: 'scroll' },
+    { name: 'Home', key: 'home', type: 'section' },
+    { name: 'About', key: 'about', type: 'section' },
+    { name: 'Experience', key: 'experience', type: 'section' },
+    { name: 'Projects', key: 'projects', type: 'section' },
+    { name: 'Certifications', key: 'certifications', type: 'section' },
+    { name: 'Testimonials', key: 'testimonials', type: 'section' },
+    { name: 'Blog', key: 'blog', href: '/blog', type: 'link' },
+    { name: 'Contact', key: 'contact', type: 'section' },
   ]
 
-  const scrollTo = (href) => {
-    if (pathname !== '/') {
-      window.location.href = '/' + href
-    } else {
-      document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
-    }
+  const handleSelect = (key) => {
+    setIsMobileMenuOpen(false)
+    if (onSelect) onSelect(key)
   }
-
-  const navLinkClass = (href) =>
-    `relative text-sm font-medium transition-colors duration-200 group ${
-      pathname === href
-        ? 'text-emerald-500'
-        : 'text-gray-600 dark:text-gray-300 hover:text-emerald-500 dark:hover:text-emerald-400'
-    }`
 
   return (
     <motion.header
@@ -69,37 +59,20 @@ export default function Header() {
 
         {/* Logo */}
         <Link href="/">
-          <motion.span
+          <motion.div
             whileHover={{ scale: 1.05 }}
-            className="text-xl font-bold gradient-text cursor-pointer select-none"
+            className="flex items-center gap-2 cursor-pointer select-none"
           >
-            MSR
-          </motion.span>
+            <div className="w-10 h-9 rounded-md bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center p-0.5">
+              <img src="/assets/images/logo (3).png" alt="Vaibhav Kashyap Logo" className="w-full h-full object-contain" />
+            </div>
+            <span className="text-2xl font-bold hidden sm:block text-black dark:text-white">VK</span>
+          </motion.div>
         </Link>
 
-        {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-6 lg:gap-8 absolute left-1/2 -translate-x-1/2">
-          {navItems.map((item) =>
-            item.type === 'link' ? (
-              <Link key={item.name} href={item.href} className={navLinkClass(item.href)}>
-                {item.name}
-                <span className={`absolute -bottom-1 left-0 h-0.5 bg-emerald-500 rounded-full transition-all duration-200 ${pathname === item.href ? 'w-full' : 'w-0 group-hover:w-full'}`} />
-              </Link>
-            ) : (
-              <button
-                key={item.name}
-                onClick={() => scrollTo(item.href)}
-                className="relative text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors duration-200 group"
-              >
-                {item.name}
-                <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-emerald-500 rounded-full transition-all duration-200 group-hover:w-full" />
-              </button>
-            )
-          )}
-        </div>
-
         {/* Right Controls */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-4">
+         
           <motion.button
             whileTap={{ scale: 0.9 }}
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
@@ -121,6 +94,15 @@ export default function Header() {
               ? <X size={18} className="text-gray-600 dark:text-gray-300" />
               : <Menu size={18} className="text-gray-600 dark:text-gray-300" />}
           </motion.button>
+          
+          <a
+            href="/Vaibhav_K_CV (1).pdf"
+            download="Vaibhav_K_CV.pdf"
+            className="hidden sm:flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold rounded-lg transition-colors duration-200 shadow-lg shadow-emerald-500/20"
+          >
+            <Download size={15} />
+            Download CV
+          </a>
         </div>
       </nav>
 
@@ -152,7 +134,7 @@ export default function Header() {
                 ) : (
                   <button
                     key={item.name}
-                    onClick={() => { setIsMobileMenuOpen(false); scrollTo(item.href) }}
+                    onClick={() => handleSelect(item.key)}
                     className="px-3 py-2.5 rounded-lg text-sm font-medium text-left text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark-100 transition-colors"
                   >
                     {item.name}
