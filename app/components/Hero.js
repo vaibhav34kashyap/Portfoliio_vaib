@@ -107,7 +107,7 @@ export default function Hero() {
   const handleMouseLeave = () => { mouseX.set(0); mouseY.set(0) }
 
   return (
-    <section id="home" className="min-h-[80vh] flex items-center justify-center relative overflow-hidden bg-white dark:bg-dark-300 px-4 sm:px-6 pt-20  pb-10">
+    <section id="home" className="min-h-screen sm:min-h-[82vh] flex items-center justify-center relative overflow-hidden bg-white dark:bg-dark-300 px-4 sm:px-6 pt-5 pb-16 sm:pt-20 sm:pb-10">
 
       {/* Grid background */}
       <div className="absolute inset-0 dark:hidden bg-[linear-gradient(rgba(16,185,129,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(16,185,129,0.07)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
@@ -143,7 +143,7 @@ export default function Hero() {
       ].map((item, i) => (
         <motion.div
           key={i}
-          className="absolute pointer-events-none select-none"
+          className="absolute pointer-events-none select-none hidden sm:block"
           style={{ left: `${item.x}%`, top: `${item.y}%` }}
           animate={{ y: [0, -14, 0] }}
           transition={{ duration: item.dur, repeat: Infinity, ease: 'easeInOut', delay: item.delay }}
@@ -164,7 +164,7 @@ export default function Hero() {
       </motion.div>
 
       <div className="container mx-auto relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
 
           {/* ── LEFT: Image Card ── */}
           <motion.div
@@ -205,7 +205,7 @@ export default function Hero() {
                       src={theme === 'dark' ? '/assets/images/vaibhavDark.png' : '/assets/images/vaibhavLight.png'}
                       alt="Vaibhav Kashyap"
                       width={420} height={480}
-                      className="w-72 h-80 sm:w-96 sm:h-[420px] lg:w-[420px] lg:h-[500px] object-cover object-top rounded-xl shadow-xl"
+                      className="w-56 h-64 xs:w-64 xs:h-72 sm:w-80 sm:h-[360px] lg:w-[420px] lg:h-[500px] object-cover object-top rounded-xl shadow-xl"
                       priority
                     />
                   </div>
@@ -214,14 +214,14 @@ export default function Hero() {
 
               {/* Floating badge — top right */}
               <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.9 }}
-                className="absolute -top-4 -right-4 bg-white dark:bg-dark-100 border border-emerald-200 dark:border-emerald-800 rounded-xl px-3 py-2 shadow-lg flex items-center gap-2">
+                className="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 bg-white dark:bg-dark-100 border border-emerald-200 dark:border-emerald-800 rounded-xl px-2 py-1.5 sm:px-3 sm:py-2 shadow-lg flex items-center gap-1.5">
                 <Code2 size={14} className="text-emerald-500" />
                 <span className="text-xs font-semibold text-gray-700 dark:text-gray-200">Frontend UI Developer</span>
               </motion.div>
 
               {/* Floating badge — bottom left */}
               <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1.1 }}
-                className="absolute -bottom-4 -left-4 bg-white dark:bg-dark-100 border border-emerald-200 dark:border-emerald-800 rounded-xl px-3 py-2 shadow-lg flex items-center gap-2">
+                className="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 bg-white dark:bg-dark-100 border border-emerald-200 dark:border-emerald-800 rounded-xl px-2 py-1.5 sm:px-3 sm:py-2 shadow-lg flex items-center gap-1.5">
                 <Zap size={14} className="text-emerald-500" />
                 <span className="text-xs font-semibold text-gray-700 dark:text-gray-200">Open to Work</span>
               </motion.div>
@@ -308,7 +308,7 @@ export default function Hero() {
 
               {/* Stats with count-up */}
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.95 }}
-                className="flex items-center justify-center lg:justify-start gap-6 mb-8 pb-8 border-b border-gray-200 dark:border-gray-700">
+                className="flex items-center justify-center lg:justify-start gap-4 sm:gap-6 mb-8 pb-8 border-b border-gray-200 dark:border-gray-700">
                 {stats.map((stat, i) => <StatItem key={i} value={stat.value} label={stat.label} />)}
               </motion.div>
 
