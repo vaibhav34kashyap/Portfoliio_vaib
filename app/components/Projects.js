@@ -13,7 +13,7 @@ export default function Projects() {
       title: 'Probill EHR & RCM',
       description: 'Designed and developed the complete UI for an Electronic Health Record and Revenue Cycle Management system, including patient dashboards, billing workflows, and reporting interfaces.',
       longDescription: 'Led the frontend development of a healthcare management platform, crafting responsive and accessible UI components for patient records, billing automation, and compliance workflows. Built interactive dashboards using Chart.js, integrated FullCalendar for scheduling, and used React-Bootstrap to deliver a clean, consistent design across all modules.',
-      image: '../assets/images/probill.png',
+      image: '/assets/images/Probill.png',
       tech: ['React', 'HTML5', 'CSS', 'Bootstrap', 'React-Bootstrap', 'React-icon', 'Animate.css', 'Chart.js', 'FullCalendar', 'React-Select', 'Animation'],
       liveUrl: 'https://probillrcm.com/',
       githubUrl: 'https://github.com/code-rowthtech/RCM_landing.git'
@@ -23,7 +23,7 @@ export default function Projects() {
       title: 'Diamante',
       description: 'A secure cryptocurrency exchange platform with real-time trading, wallet management, and advanced charting capabilities.',
       longDescription: 'Developed a full-featured cryptocurrency exchange with real-time trading engine, secure wallet management, and advanced charting tools. Integrated blockchain APIs, WebSocket connections for live data, and implemented robust security measures.',
-      image: '../assets/images/diamante.png',
+      image: '/assets/images/diamante.png',
       tech: ['React', 'HTML5', 'CSS', 'Bootstrap', 'React-Bootstrap', 'React-icon', 'Animate.css', 'Chart.js', 'FullCalendar', 'React-Select', 'Animation'],
       liveUrl: 'https://tequilaredondeldiamante.com/',
       githubUrl: 'https://github.com/code-rowthtech/DIAMANTE.git'
@@ -43,7 +43,7 @@ export default function Projects() {
       title: 'RowthTech Company Website',
       description: 'Corporate website for RowthTech showcasing services, portfolio, and company information with modern design and animations.',
       longDescription: 'Designed and developed the official RowthTech company website featuring service showcases, portfolio displays, and corporate information. Implemented modern UI/UX principles with smooth animations and responsive design.',
-      image: '../assets/images/rowthtech.png',
+      image: '/assets/images/rowthtech.png',
       tech: ['React', 'Next.js', 'Tailwind CSS', 'Framer Motion', 'SEO'],
       liveUrl: 'https://rowthtech.com/',
       githubUrl: 'https://github.com/code-rowthtech/rowthtech_react.git'
@@ -53,7 +53,7 @@ export default function Projects() {
       title: 'DonCruz Platinium',
       description: 'A premium luxury brand website for DonCruz Platinium showcasing exclusive collections, elegant product displays, and a refined experience for high-end clientele.',
       longDescription: 'Designed and developed a sophisticated luxury brand platform for DonCruz Platinium, featuring elegant UI, smooth animations, and premium product showcases. Built fully responsive layouts with a focus on visual storytelling, strong brand identity, and delivering a seamless high-end user experience.',
-      image: '../assets/images/Don.png',
+      image: '/assets/images/Don.png',
       tech: ['React', 'HTML5', 'CSS', 'Bootstrap', 'React-Bootstrap', 'React-icon', 'Animate.css', 'Chart.js', 'FullCalendar', 'React-Select', 'Animation'],
       liveUrl: 'https://doncruzplatinium.com/',
       githubUrl: 'https://github.com/code-rowthtech/DON_CRUZ.git'
@@ -63,7 +63,7 @@ export default function Projects() {
       title: 'RowthBMG - Business Management',
       description: 'A smart business management platform for streamlining operations, managing invoices, tracking finances, and automating day-to-day workflows for growing businesses.',
       longDescription: 'Designed and developed the UI for RowthBMG, a comprehensive business management solution featuring modules for accounting, invoicing, financial reporting, and workflow automation. Built clean, intuitive dashboards and responsive interfaces to help businesses manage their operations efficiently with role-based access and seamless user experience.',
-      image: '../assets/images/rowthbmg.png',
+      image: '/assets/images/Rowthbmg.png',
       tech: ['React', 'HTML5', 'CSS', 'Bootstrap', 'React-Bootstrap', 'React-icon', 'Animation'],
       liveUrl: 'https://rowthbmg.com',
       githubUrl: 'https://github.com/code-rowthtech/rowth_offshore.git'
@@ -83,7 +83,7 @@ export default function Projects() {
       title: 'Arc-Providers',
       description: 'Transcranial Magnetic Stimulation (TMS) offers numerous advantages over prescribed medications for treating mental health issues.',
       longDescription: "TMS is a safe, effective non-drug treatment for depression. It works by sending magnetic pulses to stimulate neurons in the brain's mood-regulating area. TMS is FDA-cleared and non-invasive.",
-      image: '../assets/images/Arc.png',
+      image: '/assets/images/Arc.png',
       tech: ['React', 'HTML5', 'CSS', 'Bootstrap', 'React-Bootstrap', 'React-icon', 'Animation'],
       liveUrl: 'https://tms.arcproviders.com/',
       githubUrl: 'https://github.com/code-rowthtech/arc_web.git'
@@ -93,7 +93,7 @@ export default function Projects() {
       title: 'Endoorphin',
       description: 'Your ultimate platform for connecting with certified personal trainers and scheduling fitness sessions at your convenience.',
       longDescription: 'Your ultimate platform for connecting with certified personal trainers and scheduling fitness sessions at your convenience. Endoorphin offers a seamless experience to find, book, and manage your fitness journey with expert guidance and personalized training plans.',
-      image: '../assets/images/Endoorphin.png',
+      image: '/assets/images/Endoorphin.png',
       tech: ['React', 'HTML5', 'CSS', 'Bootstrap', 'React-Bootstrap', 'React-icon', 'Animation'],
       liveUrl: 'https://endoorphin.com/',
       githubUrl: 'https://github.com/code-rowthtech/endoorphin_web.git'
@@ -103,7 +103,7 @@ export default function Projects() {
       title: 'Legalup',
       description: 'Providing high-quality legal services to individuals, companies, and investors in Cyprus and internationally.',
       longDescription: 'E. Ioannou Charalampous LLC is a boutique law firm based in Limassol, operating in Cyprus and Greece, with professional activity extending to Athens. The firm advises individuals, businesses, and investors seeking clear and reliable legal guidance..',
-      image: '../assets/images/Legalup.png',
+      image: '/assets/images/Legalup.png',
       tech: ['React', 'HTML5', 'CSS', 'Bootstrap', 'React-Bootstrap', 'React-icon', 'Animation'],
       liveUrl: 'https://iclawfirmcy.info/',
       githubUrl: 'https://github.com/code-rowthtech/legal-tech-cyprus-website.git'
@@ -113,7 +113,7 @@ export default function Projects() {
       title: 'Event',
       description: 'A comprehensive event management platform for planning, organizing, and executing seamless events of all scales.',
       longDescription: 'Designed and developed a full-featured event management platform that enables organizers to plan, schedule, and manage events effortlessly. The platform includes features for venue management, guest registration, ticketing, agenda planning, and real-time updates — delivering a smooth and professional experience for both organizers and attendees.',
-      image: '../assets/images/Event.png',
+      image: '/assets/images/Event.png',
       tech: ['React', 'WebSockets', 'Node.js', 'Real-time Bidding', 'Payment Gateway', 'MongoDB'],
       liveUrl: '#',
       githubUrl: '#'
@@ -123,7 +123,7 @@ export default function Projects() {
       title: 'Legalup - Law Firm Website',
       description: 'Providing high-quality legal services to individuals, companies, and investors in Cyprus and internationally.',
       longDescription: 'E. Ioannou Charalampous LLC is a boutique law firm based in Limassol, operating in Cyprus and Greece, with professional activity extending to Athens. The firm advises individuals, businesses, and investors seeking clear and reliable legal guidance..',
-      image: '../assets/images/Legaldash.png',
+      image: '/assets/images/Legaldash.png',
       tech: ['React', 'WebSockets', 'Node.js', 'Real-time Bidding', 'Payment Gateway', 'MongoDB'],
 
       liveUrl: '#',

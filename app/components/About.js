@@ -23,12 +23,12 @@ function TabSection({ features }) {
 
   return (
     <div className="mb-10 sm:mb-12">
-      <div className="flex gap-0 border border-gray-200 dark:border-gray-700 w-fit mb-6">
+      <div className="flex gap-0 border border-gray-200 dark:border-gray-700 w-full sm:w-fit mb-6">
         {tabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`relative px-6 py-2.5 text-xs font-bold tracking-[0.3em] uppercase transition-colors duration-200 ${
+            className={`relative flex-1 sm:flex-none px-4 sm:px-6 py-2.5 text-xs font-bold tracking-[0.3em] uppercase transition-colors duration-200 ${
               activeTab === tab.id
                 ? 'bg-emerald-500 text-white'
                 : 'bg-white dark:bg-dark-100 text-gray-400 dark:text-gray-500 hover:text-emerald-600 dark:hover:text-emerald-400'
@@ -133,14 +133,16 @@ export default function About() {
     <section id="about" className="bg-gradient-to-br from-emerald-50 via-white to-emerald-50 border-b border-emerald-100 dark:from-emerald-950/20 dark:via-dark-200 dark:to-emerald-950/20 dark:border-emerald-900/30 relative overflow-hidden">
       <GradualBlur position="top" height="6rem" strength={2} divCount={5} opacity={0.6} />
 
-      
+       <div className="border-y border-gray-200 dark:border-gray-700 bg-white dark:bg-dark-100 overflow-hidden py-3">
+       
+      </div>
 
 
-      <div className="container mx-auto px-4 sm:px-8 py-8 sm:py-10 lg:py-10">
+      <div className="container mx-auto px-3 sm:px-8 py-6 sm:py-10 lg:py-10">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center mb-10 sm:mb-12">
           <BlurReveal>
             <p className="text-xs font-bold tracking-[0.4em] uppercase text-emerald-600 dark:text-emerald-400 mb-4">About Me</p>
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-none tracking-tight text-gray-900 dark:text-white mb-4">
+            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black leading-none tracking-tight text-gray-900 dark:text-white mb-4">
               CRAFTING<br />
               <span className="gradient-text">DIGITAL</span><br />
               STORIES.
@@ -167,11 +169,11 @@ export default function About() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.35, delay: i * 0.1 }}
                     whileHover={{ scale: 1.07, borderColor: 'rgb(16,185,129)' }}
-                    className="border border-gray-200 dark:border-gray-700 p-4 bg-white dark:bg-dark-100 rounded-lg shadow transition-all duration-200 cursor-pointer flex flex-row items-center gap-4 hover:bg-emerald-50 dark:hover:bg-emerald-950/30 hover:border-emerald-500 dark:hover:border-emerald-500"
+                    className="border border-gray-200 dark:border-gray-700 p-3 sm:p-4 bg-white dark:bg-dark-100 rounded-lg shadow transition-all duration-200 cursor-pointer flex flex-row items-center gap-2 sm:gap-4 hover:bg-emerald-50 dark:hover:bg-emerald-950/30 hover:border-emerald-500 dark:hover:border-emerald-500"
                   >
                     <div className="text-emerald-600 dark:text-emerald-400 shrink-0">{item.icon}</div>
                     <div>
-                      <p className="text-xl font-black text-emerald-600 dark:text-emerald-400">{item.value}</p>
+                      <p className="text-base sm:text-xl font-black text-emerald-600 dark:text-emerald-400">{item.value}</p>
                       <p className="text-xs tracking-widest uppercase text-gray-400 dark:text-gray-500">{item.label}</p>
                     </div>
                   </motion.div>

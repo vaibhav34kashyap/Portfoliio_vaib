@@ -66,7 +66,7 @@ export default function Home() {
       <Sidebar activeSection={activeSection} onSelect={scrollToSection} />
       <RightSidebar />
       <HelloBoy />
-      <div className="pt-16">
+      <div className="pt-12">
         {sections.map(({ key, Component }) => (
           <SectionCard key={key} sectionKey={key} Component={Component} onVisible={setActiveSection} />
         ))}
